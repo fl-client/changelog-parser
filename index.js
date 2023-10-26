@@ -1,5 +1,4 @@
 const EOL = require('os').EOL
-const lineReader = require('line-reader')
 const removeMarkdown = require('remove-markdown')
 
 // patterns
@@ -59,13 +58,11 @@ function parseChangelog (options, callback) {
  * Internal parsing logic.
  *
  * @param {options} options - options object
- * @param {string} [options.filePath] - path to changelog file
  * @param {string} [options.text] - changelog text (filePath alternative)
  * @param {boolean} [options.removeMarkdown] - remove markdown
  * @returns {Promise<object>} - parsed changelog object
  */
 function parse (options) {
-  const filePath = options.filePath
   const text = options.text
   const data = {
     log: { versions: [] },
@@ -92,8 +89,6 @@ function parse (options) {
     if (text) {
       text.split(/\r\n?|\n/mg).forEach(cb)
       done()
-    } else {
-      lineReader.eachLine(filePath, cb, EOL).then(done)
     }
   })
 }

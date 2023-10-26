@@ -65,17 +65,7 @@ parseChangelog('path/to/CHANGELOG.md')
 
 You can optionally provide a configuration object `parseChangelog` function.
 
-You must provide either `filePath` or `text`.
-
-#### filePath
-
-Path to changelog file.
-
-```js
-parseChangelog({
-  filePath: 'path/to/CHANGELOG.md'
-})
-```
+You must provide `text`.
 
 #### text
 
@@ -93,7 +83,7 @@ Removes the markdown markup from the changelog entries by default. You can chang
 
 ```js
 parseChangelog({
-  filePath: 'path/to/CHANGELOG.md',
+  text: 'raw changelog text in string format'
   removeMarkdown: false // default: true
 })
 ```
